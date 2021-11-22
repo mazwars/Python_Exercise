@@ -133,3 +133,117 @@ wardrobe = {"shirt":["red","blue","white"], "jeans":["blue","black"]}
 for key,values in wardrobe.items():
 	for value in values:
 		print("{} {}".format(value, key))
+
+##### New Quiz on Dictionary #####
+'''
+
+
+The email_list function receives a dictionary, which contains domain names as keys, and a list of users as values. Fill in the blanks to generate a list that contains complete email addresses (e.g. diana.prince@gmail.com).
+'''
+
+def email_list(domains):
+	emails = []
+	for domain,users in domains.items():
+	  for user in users:
+	    emails.append(user+ "@" + domain)
+	return(emails)
+
+print(email_list({"gmail.com": ["clark.kent", "diana.prince", "peter.parker"], "yahoo.com": ["barbara.gordon", "jean.grey"], "hotmail.com": ["bruce.wayne"]}))
+
+###############
+
+'''
+
+
+The groups_per_user function receives a dictionary, which contains group names with the list of users. Users can belong to multiple groups. Fill in the blanks to return a dictionary with the users as keys and a list of their groups as values. 
+
+'''
+
+def groups_per_user(group_dictionary):
+	user_groups = {}
+	# Go through group_dictionary
+	for key,users in group_dictionary.items():
+		# Now go through the users in the group
+		for user in users:
+			if(user not in user_groups.keys()):
+				user_groups[user]=[]
+			user_groups[user].append(key)
+			# Now add the group to the the list of
+# groups for this user, creating the entry
+# in the dictionary if necessary
+
+	return(user_groups)
+
+print(groups_per_user({"local": ["admin", "userA"],
+		"public":  ["admin", "userB"],
+		"administrator": ["admin"] }))
+
+#####
+
+'''
+
+The add_prices function returns the total price of all of the groceries in the  dictionary. Fill in the blanks to complete this function.
+
+'''
+
+def add_prices(basket):
+	# Initialize the variable that will be used for the calculation
+	total = 0
+	# Iterate through the dictionary items
+	for key,value in basket.items():
+		# Add each price to the total calculation
+		# Hint: how do you access the values of
+		# dictionary items?
+		total += value
+	# Limit the return value to 2 decimal places
+	return round(total, 2)
+
+groceries = {"bananas": 1.56, "apples": 2.50, "oranges": 0.99, "bread": 4.59,
+	"coffee": 6.99, "milk": 3.39, "eggs": 2.98, "cheese": 5.44}
+
+print(add_prices(groceries)) # Should print 28.44
+
+
+##################
+
+'''
+Assessment: Graded Assessment module 4
+'''
+
+'''
+Ques 1
+The format_address function separates out parts of the address string into new strings: house_number and street_name, and returns: "house number X on street named Y". The format of the input string is: numeric house number, followed by the street name which may contain numbers, but never by themselves, and could be several words long. For example, "123 Main Street", "1001 1st Ave", or "55 North Center Drive". Fill in the gaps to complete this function.
+'''
+
+
+def format_address(address_string):
+    # Declare variables
+
+    # Separate the address string into parts
+    list1 = address_string.split(" ")
+    # Traverse through the address parts
+    st = ""
+    for x in range(len(list1)):
+        if (x != 0):
+            st += list1[x] + " "
+        # Determine if the address part is the
+        # house number or part of the street name
+
+    # Does anything else need to be done
+    # before returning the result?
+
+    # Return the formatted string
+    return "house number {} on street named {}".format(list1[0], st.strip())
+
+
+print(format_address("123 Main Street"))
+# Should print: "house number 123 on street named Main Street"
+
+print(format_address("1001 1st Ave"))
+# Should print: "house number 1001 on street named 1st Ave"
+
+print(format_address("55 North Center Drive"))
+# Should print "house number 55 on street named North Center Drive"
+
+############
+
